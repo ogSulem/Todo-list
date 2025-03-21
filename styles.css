@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eef3fc;
+}
+
+header {
+    background-color: #1e73e8;
+    color: white;
+    padding: 0.5vw 4vw;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+.container {
+    padding: 0.5rem 4rem;
+}
+
+.task-form {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 0.625rem;
+    display: inline-block;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+}
+
+input {
+    flex-grow: 1;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+}
+
+button {
+    background: #1e73e8;
+    color: white;
+    border: none;
+    padding: 0.5rem 2.5rem;
+    font-size: 1rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+}
+
+.task-board {
+    display: flex;
+    gap: 3rem;
+    /* Используем rem */
+    margin-top: 3rem;
+}
+
+.backlog,
+.in-progress,
+.done,
+.trash {
+    width: 14vw;
+}
+
+ul {
+    list-style: none;
+    margin-left: -2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+li {
+    background: white;
+    padding: 1.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.625rem;
+}
+
+h3 {
+    text-align: center;
+    border-radius: 0.3125rem;
+    padding: 0.625rem 1.25rem;
+    display: inline-block;
+    margin: 0.3125rem 0;
+}
+
+.backlog h3 {
+    background: rgba(100, 100, 100, 0.2);
+    color: rgb(100, 100, 100);
+}
+
+.backlog li {
+    border-left: 0.4375rem solid rgb(100, 100, 100, 0.25);
+}
+
+.in-progress h3 {
+    background: rgba(100, 100, 255, 0.2);
+    color: rgb(100, 100, 255);
+}
+
+.in-progress li {
+    border-left: 0.4375rem solid rgba(100, 100, 255, 0.25);
+}
+
+.done h3 {
+    background: rgba(100, 255, 100, 0.2);
+    color: rgb(0, 200, 100);
+}
+
+.done li {
+    border-left: 0.5rem solid rgba(100, 255, 100, 0.25);
+}
+
+.trash h3 {
+    background: rgba(255, 100, 100, 0.2);
+    color: rgb(200, 100, 100);
+}
+
+.trash li {
+    border-left: 0.5r solid rgba(255, 100, 100, 0.25);
+}
+
+.clear-btn {
+    background: #d9534f;
+    color: white;
+    width: 100%;
+    margin-top: 1rem;
+}
