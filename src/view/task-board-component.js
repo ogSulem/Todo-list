@@ -14,7 +14,6 @@ function createTaskBoardComponentTemplate() {
                 </div>
                 <div class="trash">
                     <h3>Корзина</h3>
-                    <button class="clear-btn">✖ Очистить</button>
                 </div>
             </section>
         `;
