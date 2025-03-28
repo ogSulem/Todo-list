@@ -37,7 +37,7 @@ Object.entries(initialTasks).forEach(([section, tasks]) => {
     render(taskListComponent, taskListElement, RenderPosition.BEFOREEND);
 
     tasks.forEach(task =>
-        render(new TaskComponent(task), taskListComponent.getElement(), RenderPosition.AFTERBEGIN)
+        render(new TaskComponent(task), taskListComponent.getElement(), RenderPosition.BEFOREEND)
     );
 
     if (section === 'trash') {
