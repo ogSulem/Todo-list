@@ -27,13 +27,11 @@ render(new AddTaskFormComponent(), bodyContainer, RenderPosition.AFTERBEGIN);
 const taskBoardComponent = new TaskBoardComponent();
 render(taskBoardComponent, bodyContainer, RenderPosition.BEFOREEND);
 
-for (const [section, tasks] of Object.entries(initialTasks)) {
+Object.entries(initialTasks).forEach(([section, tasks]) => {
     const taskListElement = taskBoardComponent.getElement().querySelector(`.${section}`);
     const taskListComponent = new TaskListComponent();
+
     render(taskListComponent, taskListElement, RenderPosition.BEFOREEND);
 
-    tasks.forEach((task) => {
-        const taskComponent = new TaskComponent(task);
-        render(taskComponent, taskListComponent.getElement(), RenderPosition.BEFOREEND);
-    });
-}
+    tasks.forEach(task => render(new TaskComponent(task), taskListComponent.getElement(), RenderPosition.BEFOREEND));
+});

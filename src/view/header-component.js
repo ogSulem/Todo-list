@@ -3,7 +3,7 @@ import { createElement } from '../framework/render.js';
 
 function createHeaderComponentTemplate() {
     return (
-        `<header class="container">
+        `<header>
             <h1>Список задач</h1>
         </header>`
     );

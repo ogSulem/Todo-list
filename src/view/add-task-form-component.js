@@ -3,13 +3,15 @@ import { createElement } from '../framework/render.js';
 
 function createAddTaskFormComponentTemplate() {
     return (
-        `<section class="task-form">
-            <h2>Новая задача</h2>
-            <form class="input-group">
-                <input type="text" placeholder="Название задачи...">
-                <button>+ Добавить</button>
-            </form>
-        </section>`
+        `<form class="add-task__form">
+            <div class="add-task__input-wrapper">
+                <label for="add-task">Новая задача</label>
+                <input type="text" name="task-name" id="add-task" placeholder="Название задачи..." required>
+            </div>
+            <button class="add-task__button button" type="submit">
+                <span>+ Добавить</span>
+            </button>
+        </form>`
     );
 }
 
