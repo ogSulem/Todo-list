@@ -1,7 +1,7 @@
 import { createElement } from '../framework/render.js';
 
 function createTaskListComponentTemplate() {
-    return '<ul class="task-list"></ul>';
+    return '<div><ul class="task-list"></ul></div>';
 }
 
 export default class TaskListComponent {
