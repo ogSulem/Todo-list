@@ -14,7 +14,7 @@ render(new AddTaskFormComponent(), bodyContainer, RenderPosition.AFTERBEGIN);
 const taskBoardComponent = new TaskBoardComponent();
 render(taskBoardComponent, bodyContainer, RenderPosition.BEFOREEND);
 
-for (let i = 0; i < 4; i++} {
+for (let i = 0; i < 4; i++) {
     const taskListComponent = new TaskListComponent();
     render(taskListComponent, taskBoardComponent, RenderPosition.BEFOREEND);
 
