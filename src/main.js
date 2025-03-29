@@ -14,9 +14,12 @@ render(new AddTaskFormComponent(), bodyContainer, RenderPosition.AFTERBEGIN);
 const taskBoardComponent = new TaskBoardComponent();
 render(taskBoardComponent, bodyContainer, RenderPosition.BEFOREEND);
 
-for (let i = 0; i < 4; i++) {
-    const taskListComponent = new TaskListComponent();
-    render(taskListComponent, taskBoardComponent, RenderPosition.BEFOREEND);
+const selector = ['backlog', 'progress', 'done', 'trash'];
 
-    for (let j = 0; j < 4; j++) render(new TaskComponent(), taskListComponent.getElement(), RenderPosition.BEFOREEND);
+for (let i = 0; i < 4; i++) {
+    const taskListComponent = new TaskListComponent(selector[i]);
+    render(taskListComponent, taskBoardComponent.getElement(), RenderPosition.BEFOREEND);
+    
+    const tasksListElement = taskListComponent.getElement().querySelector('ul');
+    for (let j = 0; j < 4; j++) render(new TaskComponent(), tasksListElement, RenderPosition.BEFOREEND);
 }
