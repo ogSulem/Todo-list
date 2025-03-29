@@ -3,9 +3,12 @@ body {
     margin: 0;
     padding: 0 5rem;
     background-color: #eef3fc;
+    width: 70%;
+    margin: auto;
 }
 
 header {
+    font-family: Arial, sans-serif;
     background-color: #1e73e8;
     color: white;
     padding: 0.5vw 4.3vw;
@@ -62,7 +65,7 @@ button {
 }
 
 .backlog,
-.progress,
+.process,
 .done,
 .trash {
     width: 14vw;
@@ -102,12 +105,12 @@ h3 {
     border-left: 0.4375rem solid rgba(100, 100, 100, 0.25);
 }
 
-.progress h3 {
+.process h3 {
     background: rgba(100, 100, 255, 0.2);
     color: rgb(100, 100, 255);
 }
 
-.progress li {
+.process li {
     border-left: 0.4375rem solid rgba(100, 100, 255, 0.25);
 }
 
