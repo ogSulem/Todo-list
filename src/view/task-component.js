@@ -1,7 +1,7 @@
 import { createElement } from '../framework/render.js';
 
 function createTaskComponentTemplate() {
-    return `<li class="task"></li>`;
+    return `<li class="task">Название задачи</li>`;
 }
 
 export default class TaskComponent {
