@@ -1,4 +1,4 @@
-import { createElement } from '../framework/render.js';
+import { AbstractComponent } from '../framework/view/abstract-component.js';
 
 
 function createH3ComponentTemplate(text) {
@@ -8,26 +8,13 @@ function createH3ComponentTemplate(text) {
 }
 
 
-export default class H3Component {
+export default class H3Component extends AbstractComponent {
     constructor(text) {
+        super();
         this.text = text;
     }
 
-    getTemplate() {
+    get template() {
         return createH3ComponentTemplate(this.text);
-    }
-
-
-    getElement() {
-        if (!this.element) {
-            this.element = createElement(this.getTemplate());
-        }
-
-        return this.element;
-    }
-
-
-    removeElement() {
-        this.element = null;
     }
 }
