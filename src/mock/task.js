@@ -12,7 +12,7 @@ export const tasks = [
     {
         id: "3",
         title: "Отимизировать код",
-        status: "process"
+        status: "done"
     },
     {
         id: "4",
