@@ -1,7 +1,7 @@
 import TaskBoardComponent from "../view/task-board-component.js";
 import TaskListComponent from "../view/task-list-component.js";
 import TaskComponent from "../view/task-component.js";
-import EmptyListComponent from "../view/empty-list-component.js"; // Новый компонент
+import EmptyListComponent from "../view/empty-list-component.js";
 import H3Component from "../view/h3-component.js";
 import { Status, StatusLabel } from "../const.js";
 import { render, RenderPosition } from '../framework/render.js';
@@ -11,22 +11,29 @@ export default class TaskBoardPresenter {
     #boardContainer = null;
     #tasksModel = null;
     #tasksBoardComponent = null;
-    #boardTasks = [];
 
     constructor({ boardContainer, tasksModel }) {
         this.#boardContainer = boardContainer;
         this.#tasksModel = tasksModel;
+        this.#tasksModel.addObserver(this.#handleModelChange.bind(this));
         this.#tasksBoardComponent = new TaskBoardComponent();
     }
 
+    get tasks() {
+        return this.#tasksModel.tasks;
+    }
+
     init() {
-        this.#boardTasks = [...this.#tasksModel.tasks];
         this.#renderBoard();
     }
 
     #renderBoard() {
         render(this.#tasksBoardComponent, this.#boardContainer, RenderPosition.BEFOREEND);
         this.#renderAllTaskLists();
+    }
+
+    #clearBoard() {
+        this.#tasksBoardComponent.element.innerHTML = '';
     }
 
     #renderAllTaskLists() {
@@ -45,7 +52,7 @@ export default class TaskBoardPresenter {
 
         this.#renderListHeader(status, tasksListComponent.element);
 
-        const tasks = this.#getTasksByStatus(status);
+        const tasks = this.#tasksModel.getTasksByStatus(status);
         if (tasks.length > 0) {
             this.#renderTasks(tasks, tasksListComponent.element);
         } else {
@@ -60,7 +67,7 @@ export default class TaskBoardPresenter {
 
         this.#renderListHeader(status, tasksListComponent.element);
 
-        const tasks = this.#getTasksByStatus(status);
+        const tasks = this.#tasksModel.getTasksByStatus(status);
         if (tasks.length > 0) {
             this.#renderTasks(tasks, tasksListComponent.element);
             this.#renderDeleteButton(tasksListComponent.element);
@@ -102,13 +109,31 @@ export default class TaskBoardPresenter {
 
     #renderDeleteButton(container) {
         render(
-            new DeleteButtonComponent(),
+            new DeleteButtonComponent({
+                onClick: () => this.#clearTrash()
+            }),
             container,
             RenderPosition.BEFOREEND
         );
     }
 
-    #getTasksByStatus(status) {
-        return this.#boardTasks.filter(task => task.status === status);
+    #clearTrash() {
+        this.#tasksModel.clearTrash();
+    }
+
+    createTask() {
+        const taskTitle = document.querySelector('#add-task').value.trim();
+        if (!taskTitle) {
+            return;
+        }
+
+        this.#tasksModel.addTask(taskTitle);
+
+        document.querySelector('#add-task').value = '';
+    }
+
+    #handleModelChange() {
+        this.#clearBoard();
+        this.#renderBoard();
     }
 }
