@@ -144,3 +144,12 @@ h3 {
     border: 1px dashed #ddd;
     height: 100%;
 }
+
+.drop-indicator {
+    height: 2px;
+    background-color: #4CAF50;
+    margin: 0;
+    position: relative;
+    z-index: 10;
+    transition: all 0.1s ease;
+}
