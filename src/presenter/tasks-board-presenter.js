@@ -47,7 +47,7 @@ export default class TaskBoardPresenter {
     }
 
     #renderTasksList(status) {
-        const tasksListComponent = new TaskListComponent(status);
+        const tasksListComponent = new TaskListComponent(status, this.#handleTaskDrop.bind(this));
         render(tasksListComponent, this.#tasksBoardComponent.element, RenderPosition.BEFOREEND);
 
         this.#renderListHeader(status, tasksListComponent.element);
@@ -62,7 +62,7 @@ export default class TaskBoardPresenter {
 
     #renderTrashList() {
         const status = 'trash';
-        const tasksListComponent = new TaskListComponent(status);
+        const tasksListComponent = new TaskListComponent(status, this.#handleTaskDrop.bind(this));
         render(tasksListComponent, this.#tasksBoardComponent.element, RenderPosition.BEFOREEND);
 
         this.#renderListHeader(status, tasksListComponent.element);
@@ -93,7 +93,7 @@ export default class TaskBoardPresenter {
 
     #renderTask(task, container) {
         render(
-            new TaskComponent(task.title),
+            new TaskComponent(task),
             container,
             RenderPosition.BEFOREEND
         );
@@ -135,5 +135,9 @@ export default class TaskBoardPresenter {
     #handleModelChange() {
         this.#clearBoard();
         this.#renderBoard();
+    }
+
+    #handleTaskDrop(taskId, newStatus, afterId) {
+        this.#tasksModel.moveTask(taskId, newStatus, afterId);
     }
 }
