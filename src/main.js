@@ -3,9 +3,13 @@ import AddTaskFormComponent from './view/add-task-form-component.js';
 import TaskBoardPresenter from './presenter/tasks-board-presenter.js';
 import { render, RenderPosition } from './framework/render.js';
 import TasksModel from './model/tasks-model.js';
+import TasksApiService from './tasks-api-service.js';
 
+const END_POINT = 'https://68547bfc6a6ef0ed662f36fe.mockapi.io';
 const bodyContainer = document.querySelector('.board-app');
-const tasksModel = new TasksModel();
+const tasksModel = new TasksModel({
+    tasksApiService: new TasksApiService(END_POINT)
+});
 
 const tasksBoardPresenter = new TaskBoardPresenter({
     boardContainer: bodyContainer,
