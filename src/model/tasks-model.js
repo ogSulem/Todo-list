@@ -54,7 +54,7 @@ export default class TasksModel extends Observable {
         const newTask = {
             title,
             status: Status.BACKLOG,
-            id: generateID(),
+            id: generateID(this.#boardtasks),
         };
         try {
             const createdTask = await this.#tasksApiService.addTask(newTask);
